@@ -1,4 +1,5 @@
 paket-files/
+packages/
 .vs/
 aoc16/bin/
 aoc16/obj/
