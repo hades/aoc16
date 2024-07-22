@@ -1,4 +1,5 @@
 ﻿using aoc16;
+using Colorful;
 using CommandLine;
 using CommandLine.Text;
 using System.Diagnostics;
@@ -7,6 +8,8 @@ using Console = Colorful.Console;
 
 public class Program
 {
+    private static readonly string RESULTS_FILE = "results.toml";
+
     class Options
     {
         [Option('v', "verbose", Required = false, HelpText = "Enable verbose output.")]
@@ -57,13 +60,33 @@ public class Program
                 if (!opts.SecondOnly)
                 {
                     Console.WriteLine($"solving first part of day {day}...");
-                    var (result, solveTime) = TimeSolve(solver, input, false);
-                    Console.WriteLine($"answer is {result} (took {solveTime})");
+                    var(answer, solveTime) = TimeSolve(solver, input, false);
+                    Console.WriteLine($"answer is {answer} (took {solveTime})");
+                    if (opts.Submit)
+                    {
+                        Console.WriteLine("submitting answer...");
+                        var result = Autosubmit.Submit(day, 1, answer, httpClient, RESULTS_FILE, Sleep);
+                        Console.WriteLineFormatted("answer submission result: {0}",
+                            new Formatter(
+                                result.ToString(),
+                                ColorTranslator.FromHtml(Autosubmit.Result.ACCEPTED == result ? "#43a047" : "#e53935")),
+                            ColorTranslator.FromHtml("#eeeeee"));
+                    }
                 }
                 {
                     Console.WriteLine($"solving second part of day {day}...");
-                    var (result, solveTime) = TimeSolve(solver, input, true);
-                    Console.WriteLine($"answer is {result} (took {solveTime})");
+                    var (answer, solveTime) = TimeSolve(solver, input, true);
+                    Console.WriteLine($"answer is {answer} (took {solveTime})");
+                    if (opts.Submit)
+                    {
+                        Console.WriteLine("submitting answer...");
+                        var result = Autosubmit.Submit(day, 2, answer, httpClient, RESULTS_FILE, Sleep);
+                        Console.WriteLineFormatted("answer submission result: {0}",
+                            new Formatter(
+                                result.ToString(),
+                                ColorTranslator.FromHtml(Autosubmit.Result.ACCEPTED == result ? "#43a047" : "#e53935")),
+                            ColorTranslator.FromHtml("#eeeeee"));
+                    }
                 }
             }
             catch (Exception ex)
@@ -104,4 +127,6 @@ public class Program
     }
 
     private static void WriteError(string? message) { Console.WriteLine(message); }
+
+    private static void Sleep(int seconds) => Thread.Sleep(TimeSpan.FromSeconds(seconds));
 }

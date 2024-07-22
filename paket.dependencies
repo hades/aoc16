@@ -1,6 +1,7 @@
 source https://api.nuget.org/v3/index.json
 
 nuget CommandLineParser
+nuget Moq
 nuget Newtonsoft.Json
 nuget Colorful.Console
 nuget Tomlyn
