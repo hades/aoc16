@@ -14,4 +14,13 @@ public class TestDay01
         solver.Presolve(input);
         Assert.Equal(expected.ToString(), solver.SolveFirst());
     }
+
+    [Theory]
+    [InlineData("R8, R4, R4, R8", 4)]
+    public void TestSecondPart(string input, int expected)
+    {
+        var solver = new Day01();
+        solver.Presolve(input);
+        Assert.Equal(expected.ToString(), solver.SolveSecond());
+    }
 }

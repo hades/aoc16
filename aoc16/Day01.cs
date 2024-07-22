@@ -35,7 +35,28 @@ namespace aoc16
 
         public string SolveSecond()
         {
-            throw new NotImplementedException();
+            var visited = new HashSet<Tuple<int, int>>();
+            int i = 0, j = 0;
+            int dir = 0;
+            foreach (var (rotation, steps) in directions)
+            {
+                if (rotation == 'L') dir += 3;
+                if (rotation == 'R') dir += 1;
+                dir %= 4;
+                var (di, dj) = DIRECTION_MAP[dir];
+                for (int step = 0; step < steps; step++)
+                {
+                    i += di;
+                    j += dj;
+                    var key = Tuple.Create(i, j);
+                    if (visited.Contains(key))
+                    {
+                        return (Math.Abs(i) + Math.Abs(j)).ToString();
+                    }
+                    visited.Add(key);
+                }
+            }
+            throw new InvalidOperationException("no locations were visited twice");
         }
     }
 }
