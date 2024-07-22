@@ -2,3 +2,5 @@ paket-files/
 .vs/
 aoc16/bin/
 aoc16/obj/
+tests/bin/
+tests/obj/
