@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.Collections.Immutable;
 
 namespace aoc16
 {
+    [ForDay(1)]
     public class Day01 : Solver
     {
         private ImmutableList<Tuple<char, int>> directions = ImmutableList<Tuple<char, int>>.Empty;

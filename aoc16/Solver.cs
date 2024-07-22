@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace aoc16
+﻿namespace aoc16
 {
+    [System.AttributeUsage(System.AttributeTargets.Class)]
+    public class ForDayAttribute : System.Attribute
+    {
+        public readonly int day;
+
+        public ForDayAttribute(int day) {  this.day = day; }
+    }
+
     /**
      * Interface for solvers for problems for individual AoC daily puzzles.
      */
@@ -14,5 +16,22 @@ namespace aoc16
         void Presolve(string input);
         string SolveFirst();
         string SolveSecond();
+
+        static Solver GetSolverForDay(int day)
+        {
+            foreach (var type in typeof(Solver).Assembly.DefinedTypes)
+            {
+                if (Attribute.GetCustomAttribute(type, typeof(ForDayAttribute)) is not ForDayAttribute attribute) continue;
+                if (attribute.day == day)
+                {
+                    if (Activator.CreateInstance(type) is not Solver instance)
+                    {
+                        throw new InvalidOperationException($"unable to instantiate solver {type} for day {day}");
+                    }
+                    return instance;
+                }
+            }
+            throw new InvalidDataException($"solver for day {day} not found");
+        }
     }
 }
