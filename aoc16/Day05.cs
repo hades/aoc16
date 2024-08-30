@@ -4,7 +4,7 @@ using System.Text;
 namespace aoc16
 {
     [ForDay(5)]
-    public partial class Day05 : Solver
+    public class Day05 : Solver
     {
         string input = "";
 

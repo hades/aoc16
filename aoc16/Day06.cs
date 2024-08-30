@@ -3,7 +3,7 @@ using System.Collections.Immutable;
 namespace aoc16
 {
     [ForDay(6)]
-    public partial class Day06 : Solver
+    public class Day06 : Solver
     {
         ImmutableList<string> input = [];
 
