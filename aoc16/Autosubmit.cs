@@ -113,7 +113,7 @@ namespace aoc16
                 {
                     throw new InvalidOperationException($"failed to parse response: {response}");
                 }
-                var (minutes, seconds) = (m.Groups[0].Value, m.Groups[1].Value);
+                var (minutes, seconds) = (m.Groups[1].Value, m.Groups[2].Value);
                 var timeout = int.Parse(minutes ?? "0") * 60 + int.Parse(seconds ?? "0");
                 delayFunc(timeout);
                 return SubmitToServer(day, part, answer, httpClient, delayFunc);
