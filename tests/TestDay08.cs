@@ -40,7 +40,8 @@ rotate column x=0 by 1
 rect 9x1
 rotate row y=2 by 5
 rotate row y=0 by 5
-rotate column x=0 by rect 4x1
+rotate column x=0 by 1
+rect 4x1
 rotate row y=2 by 5
 rotate row y=0 by 5
 rotate column x=0 by 1
