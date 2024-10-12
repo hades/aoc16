@@ -1,0 +1,31 @@
+name: InspectCode
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, reopened]
+  workflow_dispatch:
+  
+jobs:
+  inspect-code:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Restore tools
+        run: dotnet tool restore
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Run ReSharper
+        run: dotnet jb inspectcode ./aoc16.sln --output=inspectcode.json
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: inspectcode.json
+          category: resharper-inspectcode
+
+    permissions:
+      security-events: write
