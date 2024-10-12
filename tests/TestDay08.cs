@@ -1,10 +1,10 @@
-namespace tests;
-
 using aoc16;
+
+namespace tests;
 
 public class TestDay08
 {
-    const string Data = @"rect 1x1
+  private const string Data = @"rect 1x1
 rotate row y=0 by 5
 rect 1x1
 rotate row y=0 by 5
@@ -199,19 +199,19 @@ rotate column x=1 by 3
 rotate column x=0 by 4
 ";
 
-    [Fact]
-    public void TestFirstPart()
-    {
-        var solver = new Day08();
-        solver.Presolve(Data);
-        Assert.Equal("119", solver.SolveFirst());
-    }
+  [Fact]
+  public void TestFirstPart()
+  {
+    var solver = new Day08();
+    solver.Presolve(Data);
+    Assert.Equal("119", solver.SolveFirst());
+  }
 
-    [Fact]
-    public void TestSecondPart()
-    {
-        var solver = new Day08();
-        solver.Presolve(Data);
-        Assert.Equal("ZFHFSFOGPO", solver.SolveSecond());
-    }
+  [Fact]
+  public void TestSecondPart()
+  {
+    var solver = new Day08();
+    solver.Presolve(Data);
+    Assert.Equal("ZFHFSFOGPO", solver.SolveSecond());
+  }
 }

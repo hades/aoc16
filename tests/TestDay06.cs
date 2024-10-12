@@ -1,14 +1,14 @@
-namespace tests;
-
 using aoc16;
+
+namespace tests;
 
 public class TestDay06
 {
-    [Fact]
-    public void TestFirstPart()
-    {
-        var solver = new Day06();
-        solver.Presolve(@"eedadn
+  [Fact]
+  public void TestFirstPart()
+  {
+    var solver = new Day06();
+    solver.Presolve(@"eedadn
 drvtee
 eandsr
 raavrd
@@ -25,14 +25,14 @@ vrdear
 dvrsen
 enarar
 ");
-        Assert.Equal("easter", solver.SolveFirst());
-    }
+    Assert.Equal("easter", solver.SolveFirst());
+  }
 
-    [Fact]
-    public void TestSecondPart()
-    {
-        var solver = new Day06();
-        solver.Presolve(@"eedadn
+  [Fact]
+  public void TestSecondPart()
+  {
+    var solver = new Day06();
+    solver.Presolve(@"eedadn
 drvtee
 eandsr
 raavrd
@@ -49,6 +49,6 @@ vrdear
 dvrsen
 enarar
 ");
-        Assert.Equal("advent", solver.SolveSecond());
-    }
+    Assert.Equal("advent", solver.SolveSecond());
+  }
 }
