@@ -6,8 +6,13 @@
       "version": "8.0.3",
       "commands": [
         "paket"
-      ],
-      "rollForward": false
+      ]
+    },
+    "jetbrains.resharper.globaltools": {
+      "version": "2024.2.6",
+      "commands": [
+        "jb"
+      ]
     }
   }
 }
