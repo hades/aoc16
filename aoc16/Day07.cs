@@ -6,7 +6,7 @@ namespace aoc16
     [ForDay(7)]
     public partial class Day07 : Solver
     {
-        ImmutableList<(ImmutableList<string> outside, ImmutableList<string> inside)> parsed;
+        ImmutableList<(ImmutableList<string> outside, ImmutableList<string> inside)> parsed = [];
 
         [GeneratedRegex(@"^(?:(\w+)\[(\w+)\])*(\w+)$")]
         private static partial Regex AddressRegex();

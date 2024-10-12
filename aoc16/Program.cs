@@ -37,7 +37,7 @@ public class Program
         }
     }
 
-    static int Main(Options opts)
+    static int RunMain(Options opts)
     {
         if (!opts.Days.Any())
         {
@@ -122,7 +122,7 @@ public class Program
     {
         Console.WriteAscii("AoC 2016", ColorTranslator.FromHtml("#fad6ff"));
         return Parser.Default.ParseArguments<Options>(args).MapResult(
-            opts => Main(opts),
+            opts => RunMain(opts),
             _ => 1);
     }
 
