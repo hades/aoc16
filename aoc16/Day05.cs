@@ -33,7 +33,10 @@ public class Day05 : Solver
     var password = new char[8];
     var suffix = 0;
     Console.WriteLine();
-    Console.CursorVisible = false;
+    try
+    {
+      Console.CursorVisible = false;
+    } catch (IOException) { }
     while (Array.IndexOf(password, (char)0) >= 0)
     {
       var hash = MD5.HashData(Encoding.UTF8.GetBytes($"{input}{suffix}"));
@@ -50,7 +53,10 @@ public class Day05 : Solver
 
     var passwordStr = new string(password);
     Console.WriteLine("\r" + passwordStr);
-    Console.CursorVisible = true;
+    try
+    {
+      Console.CursorVisible = true;
+    } catch (IOException) { }
     return passwordStr;
   }
 
