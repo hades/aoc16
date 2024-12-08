@@ -4,4 +4,5 @@ nuget CommandLineParser
 nuget Moq
 nuget Newtonsoft.Json
 nuget Colorful.Console
+nuget QuickGraph
 nuget Tomlyn
