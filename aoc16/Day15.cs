@@ -1,4 +1,4 @@
-using System.Numerics;
+ï»¿using System.Numerics;
 using System.Text.RegularExpressions;
 
 namespace aoc16;
@@ -17,7 +17,7 @@ public partial class Day15 : Solver {
     }).ToList();
   }
 
-  private (BigInteger gcd, List<BigInteger> bézout) ExtendedEuclideanAlgorithm(List<BigInteger> vals) {
+  private (BigInteger gcd, List<BigInteger> bÃ©zout) ExtendedEuclideanAlgorithm(List<BigInteger> vals) {
     var g = vals[0];
     List<BigInteger> cs = [1];
     for (int i = 1; i < vals.Count; i++) {
@@ -43,12 +43,12 @@ public partial class Day15 : Solver {
   public string Solve(List<(int, int)> discs) {
     var eucd = ExtendedEuclideanAlgorithm([discs[0].Item1, discs[1].Item1]);
     BigInteger factor = discs[0].Item1 * discs[1].Item1;
-    var cur_solution = ((-1 - discs[0].Item2) * discs[1].Item1 * eucd.bézout[1] +
-                        (-2 - discs[1].Item2) * discs[0].Item1 * eucd.bézout[0]) % factor;
+    var cur_solution = ((-1 - discs[0].Item2) * discs[1].Item1 * eucd.bÃ©zout[1] +
+                        (-2 - discs[1].Item2) * discs[0].Item1 * eucd.bÃ©zout[0]) % factor;
     for (int i = 2; i < discs.Count; i++) {
       eucd = ExtendedEuclideanAlgorithm([factor, discs[i].Item1]);
-      cur_solution = (cur_solution * discs[i].Item1 * eucd.bézout[1] +
-                      (-i - 1 - discs[i].Item2) * factor * eucd.bézout[0]);
+      cur_solution = (cur_solution * discs[i].Item1 * eucd.bÃ©zout[1] +
+                      (-i - 1 - discs[i].Item2) * factor * eucd.bÃ©zout[0]);
       factor *= discs[i].Item1;
       cur_solution %= factor;
     }
